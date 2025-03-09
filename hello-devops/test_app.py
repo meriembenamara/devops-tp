@@ -1,8 +1,15 @@
-# test_app .py
-import unittest
-# For a simple example , we simply test True .
-class TestApp ( unittest . TestCase ):
-    def test_output ( self ):
-        self . assertTrue ( True )
-if __name__ == " __main__ ":
-    unittest . main ()
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello, CI/CD!"
+
+# Nouveau point de terminaison /status
+@app.route('/status')
+def status():
+    return "API is up and running!"
+
+if __name__ == "__main__":
+    app.run()
+
